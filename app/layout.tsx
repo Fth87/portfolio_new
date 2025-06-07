@@ -23,10 +23,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" className={`${manrope.variable} antialiased`}> 
+    <html  lang="id" className={`${manrope.variable} antialiased scroll-smooth`}> 
       <body className="bg-white text-gray-800 font-sans "> 
         <Navbar />
-        <main className='h-[2000px]'> 
+        <main className=''> 
           {children}
         </main>
         <Footer />

@@ -1,36 +1,138 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================
+   Konfigurasi Tema dengan @theme
+   ============================ */
+@theme {
+  /* Warna */
+  --color-primary: #3f78e0;
+  --color-soft-blue: #f1f5fd;
+  --color-body-bg: #fefefe;
+  --color-body-color: #60697b;
+  --color-nav-link: #343f52;
+  --color-nav-link-hover: #3f78e0;
+  --color-offcanvas-bg: #1e2228;
+  --color-offcanvas-text: #f0f1f2;
+  --color-social-muted: #343f52;
+
+  --color-bs-red: '#e2626b';
+  --color-soft-red: '#fdf3f4';
+  --color-bs-yellow: '#fab758';
+  --color-soft-yellow: '#fff8ef';
+  --color-bs-leaf: '#7cb798';
+  --color-soft-leaf: '#f5faf7';
+  --color-bs-purple: '#747ed1';
+  --color-soft-purple: '#f5f5fc';
+
+  /* Warna Gradien */
+  --color-gradient-7-start: #0093e9;
+  --color-teal-gradient-end: #80d0c7;
+  --color-gradient-6-start: #08aeea;
+  --color-green-gradient-end: #2af598;
+
+  /* Radius Border */
+  --radius-sandbox: 0.4rem;
+
+  /* Bayangan Kotak */
+  --shadow-sandbox-sm: 0 0.25rem 0.75rem rgba(30, 34, 40, 0.02);
+  --shadow-sandbox: 0 0 1.25rem rgba(30, 34, 40, 0.04);
+  --shadow-sandbox-lg: 0 0.25rem 1.75rem rgba(30, 34, 40, 0.07);
+
+  /* Ukuran Font */
+  --text-nav-link: 0.8rem;
+  --text-body-base: 0.8rem;
+
+  /* Z-Index */
+  --z-navbar: 1020;
+  --z-offcanvas: 1040;
+  --z-dropdown: 1000;
 }
 
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================
+   Utilitas Gradien Kustom
+   ============================ */
+@layer components {
+  /* Teks Gradien - Varian 7 */
+  .text-gradient-7 {
+    @apply bg-clip-text text-transparent inline-block;
+    background-image: linear-gradient(100deg, var(--color-gradient-7-start) 0%, var(--color-teal-gradient-end) 95%);
   }
-} */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Teks Gradien - Varian 6 */
+  .text-gradient-6 {
+    @apply bg-clip-text text-transparent inline-block;
+    background-image: linear-gradient(45deg, var(--color-gradient-6-start) 0%, var(--color-green-gradient-end) 100%);
+  }
+
+  /* Tombol Gradien Terisi - Varian 7 */
+  .btn-filled-gradient-7 {
+    @apply rounded-full text-white px-7 py-3 transition-all duration-300 ease-in-out;
+    background-image: linear-gradient(to right, var(--color-gradient-7-start) 0%, var(--color-teal-gradient-end) 50%, var(--color-gradient-7-start) 100%);
+    background-size: 200% auto;
+  }
+
+  .btn-filled-gradient-7:hover {
+    background-position: right center;
+    @apply shadow-lg;
+  }
+
+  /* Tombol Outline Gradien - Varian 7 */
+  .btn-custom-gradient-7 {
+    @apply rounded-full border-2 border-transparent bg-clip-border p-[2px];
+    background-image: linear-gradient(to right, var(--color-gradient-7-start), var(--color-teal-gradient-end));
+  }
+
+  .btn-custom-gradient-7 span {
+    @apply block bg-white px-7 py-2.5 rounded-full transition-colors duration-300;
+    color: var(--color-primary);
+  }
+
+  .btn-custom-gradient-7:hover span {
+    @apply bg-transparent text-white;
+  }
+
+  .wrapper-border {
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(164, 174, 198, 0.2); /* Warna border dari Sandbox */
+    /* Anda bisa juga menggunakan warna dari palet Tailwind:
+       border-bottom-color: theme('colors.gray.300'); (misalnya)
+       Atau definisikan warna border ini di tailwind.config.ts
+    */
+  }
+
+  .wrapper-border {
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(164, 174, 198, 0.2); /* Warna dari Sandbox */
+  }
+
+  /* Gaya untuk link .more.hover */
+  .link-more {
+    /* Ganti a.more.hover dengan kelas ini */
+    @apply font-bold tracking-tight relative inline-block;
+    /* text-red, text-yellow, text-leaf, text-purple akan di-apply dari komponen */
+  }
+
+  .link-more::after {
+    /* Panah (menggunakan karakter teks) */
+    content: '→'; /* Karakter panah sederhana */
+    @apply inline-block ml-1 text-xs font-normal;
+    /* Sandbox: font-family: Custom; content: "\e902"; padding-left: .05rem; font-size: .85rem; vertical-align: -2px; */
+    /* Sesuaikan ukuran & posisi panah jika perlu */
+  }
+
+  .link-more::before {
+    /* Efek garis bawah animasi */
+    content: '';
+    @apply absolute w-full h-px bg-current left-0 pointer-events-none;
+    top: 100%; /* Posisi di bawah teks */
+    transform-origin: right; /* Sandbox: 100% 50% */
+    transform: scaleX(0); /* Sandbox: scale3d(0, 1, 1) */
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
+  .link-more:hover::before {
+    transform-origin: left; /* Sandbox: 0 50% */
+    transform: scaleX(1); /* Sandbox: scale3d(1, 1, 1) */
+    /* transition-timing-function: cubic-bezier(0.4, 1, 0.8, 1); */ /* Sudah di transition utama */
+  }
 }
-
-.text-gradient.gradient-7 {
-    background: linear-gradient(100deg, #0093e9 0, #80d0c7 95%); /* --bs-blue ke warna teal */
-    /* -webkit-background-clip: text; */
-    /* -webkit-text-fill-color: transparent; */
-    /* display: inline-block; */
-}
-
-
-
