@@ -1,20 +1,18 @@
-// app/layout.tsx
-import './globals.css' // Pastikan path ini benar
+import './globals.css' 
 import type { Metadata } from 'next'
-import { Manrope } from 'next/font/google' // Ganti Poppins dengan Manrope
-import Navbar from '../components/layout/Navbar' // Sesuaikan path jika perlu
+import { Manrope } from 'next/font/google' 
+import Navbar from '../components/layout/Navbar' 
 import Footer from '@/components/layout/Footer';
-// import Footer from '../components/layout/Footer' // Kita belum bahas footer untuk Sandbox
 
-const manrope = Manrope({ // Konfigurasi Manrope
+const manrope = Manrope({ 
   subsets: ['latin'],
-  weight: ['400', '500', '700'], // Sesuaikan dengan weight yang Anda gunakan dari @import
-  variable: '--font-manrope', // Membuat CSS variable
+  weight: ['400', '500', '700'], 
+  variable: '--font-manrope', 
 });
 
 export const metadata: Metadata = {
-  title: 'Fathan - Portofolio', // Ganti dengan judul Anda
-  description: 'Portofolio Fathan, Sandbox Theme.', // Ganti deskripsi Anda
+  title: 'Fatih - Portofolio', 
+  description: 'Portofolio Fatih.',
 }
 
 export default function RootLayout({

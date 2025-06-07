@@ -78,13 +78,13 @@
 
   /* Tombol Outline Gradien - Varian 7 */
   .btn-custom-gradient-7 {
-    @apply rounded-full border-2 border-transparent bg-clip-border p-[2px];
+    @apply rounded-full bg-clip-border p-[3px];
     background-image: linear-gradient(to right, var(--color-gradient-7-start), var(--color-teal-gradient-end));
   }
 
   .btn-custom-gradient-7 span {
     @apply block bg-white px-7 py-2.5 rounded-full transition-colors duration-300;
-    color: var(--color-primary);
+    color: var(--color-gradient-7-start);
   }
 
   .btn-custom-gradient-7:hover span {
