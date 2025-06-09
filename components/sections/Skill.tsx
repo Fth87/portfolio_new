@@ -16,7 +16,7 @@ interface SkillItem {
 }
 
 const skillsData: SkillItem[] = [
-  { name: 'React', logo: '/', logoType: 'component', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20 text-[#61DAFB]' }, // text-[#61DAFB] untuk warna fill SVG
+  { name: 'React', logo: '/img/me/react.svg', logoType: 'component', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20 text-[#61DAFB]' }, // text-[#61DAFB] untuk warna fill SVG
   { name: 'Laravel', logo: '/img/me/laravel.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 2 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
   { name: 'Tailwind', logo: '/img/me/tailwindcss.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-24 md:w-28 h-auto' }, // Tailwind logo cenderung lebih lebar
   { name: 'Bootstrap', logo: '/img/me/bootstrap.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 3 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
