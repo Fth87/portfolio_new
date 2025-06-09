@@ -1,85 +1,173 @@
 // components/sections/SkillsSection.tsx
 'use client';
 
-import Image from 'next/image';
-import { createElement } from 'react';
-// import ReactLogoIcon from '../icons/ReactLogoIcon'; // Sesuaikan path jika perlu
+import { FaReact, FaLaravel, FaBootstrap, FaGithub, FaPython, FaServer, FaCode, FaLayerGroup, FaTools } from 'react-icons/fa';
+import { FaCodeBranch, FaGitAlt } from 'react-icons/fa6';
+import { RiSupabaseFill, RiSupabaseLine } from 'react-icons/ri';
+import { SiTailwindcss, SiTypescript, SiNextdotjs, SiCplusplus, SiExpress, SiArduino } from 'react-icons/si';
+
+type SkillCategory = {
+  name: 'Frontend' | 'Backend' | 'VCS' | 'Programming' | 'Other';
+  icon: React.ReactNode;
+  color: string;
+};
 
 interface SkillItem {
   name: string;
-  logo: string | React.ElementType;
-  logoType: 'img' | 'component';
-  experience: any;
-  logoSizeClass?: string; // Kelas Tailwind untuk ukuran, e.g., 'w-16 h-16 md:w-20 md:h-20'
-  // Atribut width asli seperti "5em", "80em" tidak standar untuk pixel.
-  // Akan kita kontrol dengan logoSizeClass.
+  icon: React.ReactNode;
+  category: 'Frontend' | 'Backend' | 'VCS' | 'Programming' | 'Other';
+  iconSizeClass?: string;
 }
 
-const skillsData: SkillItem[] = [
-  { name: 'React', logo: '/img/me/react.svg', logoType: 'component', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20 text-[#61DAFB]' }, // text-[#61DAFB] untuk warna fill SVG
-  { name: 'Laravel', logo: '/img/me/laravel.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 2 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'Tailwind', logo: '/img/me/tailwindcss.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-24 md:w-28 h-auto' }, // Tailwind logo cenderung lebih lebar
-  { name: 'Bootstrap', logo: '/img/me/bootstrap.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 3 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'C++', logo: '/img/me/c.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 3 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'Github', logo: '/img/me/github.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 3 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'Typescript', logo: '/img/me/typescript.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6">On</span> Progress</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'Python', logo: '/img/me/python.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6"> ± 1 </span> Years</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
-  { name: 'Next.Js', logo: '/img/me/next-js.svg', logoType: 'img', experience: <><span className="text-gradient gradient-6">On </span> Progress</>, logoSizeClass: 'w-16 h-16 md:w-20 md:h-20' },
+const categories: SkillCategory[] = [
+  {
+    name: 'Frontend',
+    icon: <FaLayerGroup />,
+    color: 'text-[#4F46E5]',
+  },
+  {
+    name: 'Backend',
+    icon: <FaServer />,
+    color: 'text-[#10B981]',
+  },
+  {
+    name: 'VCS',
+    icon: <FaCodeBranch />,
+    color: 'text-[#F59E0B]',
+  },
+  {
+    name: 'Programming',
+    icon: <FaCode />,
+    color: 'text-[#EC4899]',
+  },
+  {
+    name: 'Other',
+    icon: <FaTools />,
+    color: 'text-[#6B7280]',
+  },
 ];
 
-const SkillItemCard: React.FC<SkillItem> = ({ name, logo, logoType, experience, logoSizeClass }) => {
-  const defaultSize = 'w-16 h-16 md:w-20 md:h-20'; // Ukuran default jika logoSizeClass tidak ada
-  const currentSizeClass = logoSizeClass || defaultSize;
+const skillsData: SkillItem[] = [
+  {
+    name: 'React',
+    icon: <FaReact className="text-[#61DAFB]" />,
+    category: 'Frontend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Laravel',
+    icon: <FaLaravel className="text-[#FF2D20]" />,
+    category: 'Backend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Express Js',
+    icon: <SiExpress className="text-[#181717]" />,
+    category: 'Backend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Supabase',
+    icon: <RiSupabaseFill className="text-green-700" />,
+    category: 'Backend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Tailwind',
+    icon: <SiTailwindcss className="text-[#38B2AC]" />,
+    category: 'Frontend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Bootstrap',
+    icon: <FaBootstrap className="text-[#7952B3]" />,
+    category: 'Frontend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'C++',
+    icon: <SiCplusplus className="text-[#00599C]" />,
+    category: 'Programming',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Arduino',
+    icon: <SiArduino className="text-[#3186a0]" />,
+    category: 'Programming',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Github',
+    icon: <FaGithub className="text-[#181717]" />,
+    category: 'VCS',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Git',
+    icon: <FaGitAlt className="text-[#f1502f]" />,
+    category: 'VCS',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Typescript',
+    icon: <SiTypescript className="text-[#3178C6]" />,
+    category: 'Programming',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Python',
+    icon: <FaPython className="text-[#3776AB]" />,
+    category: 'Programming',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+  {
+    name: 'Next.Js',
+    icon: <SiNextdotjs className="text-[#000000]" />,
+    category: 'Frontend',
+    iconSizeClass: 'text-5xl md:text-6xl',
+  },
+];
 
-  return (
-    <div className="flex flex-col items-center text-center">
-      <div className={`flex items-center justify-center mb-3 ${currentSizeClass}`}>
-        {logoType === 'component' && typeof logo === 'function' ? (
-          createElement(logo as React.ElementType, { className: `w-full h-full object-contain ${name === 'React' ? 'text-[#61DAFB]' : ''}` })
-        ) : (
-          <Image
-            src={logo as string}
-            alt={`${name} logo`}
-            width={80} // Nilai default, akan di-scale oleh object-contain dan parent size
-            height={80} // Nilai default
-            className="w-full h-full object-contain"
-          />
-        )}
-      </div>
-      {/* display-5 di Sandbox kira-kira text-xl atau text-2xl, font-semibold */}
-      <p className="text-xl font-semibold text-nav-link mb-1">{name}</p>
-      <p className="text-sm text-body-color mb-2">
-        {/* display-5 pada span di HTML asli, di sini kita buat lebih kecil dari nama skillnya */}
-        <span className="text-base md:text-lg font-semibold">{experience}</span>
-      </p>
-    </div>
-  );
-};
+const SkillItemCard = ({ name, icon, iconSizeClass = 'text-5xl md:text-6xl' }: SkillItem) => (
+  <div className="flex flex-col items-center text-center">
+    <div className={`flex items-center justify-center mb-3 ${iconSizeClass}`}>{icon}</div>
+    <p className="text-xl font-semibold text-nav-link mb-1">{name}</p>
+  </div>
+);
+
+const CategoryHeader = ({ category }: { category: SkillCategory }) => (
+  <div className="flex items-center mb-6">
+    <div className={`text-2xl mr-3 ${category.color}`}>{category.icon}</div>
+    <h3 className="text-2xl font-bold text-nav-link">{category.name}</h3>
+  </div>
+);
 
 const SkillsSection = () => {
   return (
     <section id="skills" className="wrapper wrapper-border bg-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
-        {/* Baris Judul */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 xl:gap-x-12 mb-10">
           <div className="lg:col-span-8">
-            {/* display-4 di Sandbox kira-kira text-3xl hingga text-5xl, font-bold */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-nav-link">
               My <span className="text-gradient gradient-7">Skills</span>
             </h2>
-            {/* <p className="text-lg md:text-xl text-body-color mb-5">
-              Deskripsi singkat tentang skill Anda bisa ditaruh di sini.
-            </p> */}
           </div>
         </div>
-
-        {/* Grid untuk Skills */}
-        {/* HTML asli menggunakan col-md-6 col-lg-3, berarti 2 kolom di md, 4 di lg.
-            Kita bisa gunakan grid responsif Tailwind. */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-x-6 lg:gap-x-8 xl:gap-x-10 gap-y-8 md:gap-y-10 text-center">
-          {skillsData.map((skill) => (
-            <SkillItemCard key={skill.name} {...skill} />
-          ))}
+        <div className="grid md:grid-cols-2 gap-6">
+          {categories.map((category) => {
+            const skillsInCategory = skillsData.filter((skill) => skill.category === category.name);
+            if (skillsInCategory.length === 0) return null;
+            return (
+              <div key={category.name} className="mb-12">
+                <CategoryHeader category={category} />
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-6 lg:gap-x-8 xl:gap-x-10 gap-y-8 md:gap-y-10 text-center">
+                  {skillsInCategory.map((skill) => (
+                    <SkillItemCard key={skill.name} {...skill} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
