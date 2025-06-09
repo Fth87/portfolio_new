@@ -24,11 +24,11 @@ const ProjectsSection = () => {
   const hasMoreProjects = allProjects.length > INITIAL_DISPLAY_COUNT;
 
   return (
-    <section id="projects" className="py-12 bg-gray-50">
+    <section id="projects" className="py-12 ">
       <div className="container mx-auto px-4">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            My <span className="text-blue-600">Projects</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left text-nav-link">
+            My <span className="text-gradient-6-start">Project</span>
           </h2>
           <p className="text-gray-600">Check out some of my latest projects with creative ideas.</p>
         </div>
@@ -48,7 +48,7 @@ const ProjectsSection = () => {
 
           {hasMoreProjects && (
             <div className="text-center mt-8 ">
-              <button onClick={toggleShowMore} className="hover:cursor-pointer inline-flex items-center text-gradient-7-start hover:text-blue-800 font-medium transition-colors">
+              <button onClick={toggleShowMore} className="hover:cursor-pointer inline-flex items-center text-gradient-6-start hover:text-blue-800 font-medium transition-colors">
                 {isExpanded ? (
                   <>
                     <span>Show Less</span>

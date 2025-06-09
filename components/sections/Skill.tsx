@@ -144,13 +144,13 @@ const CategoryHeader = ({ category }: { category: SkillCategory }) => (
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="wrapper wrapper-border bg-light">
+    <section id="skills" className="wrapper bg-soft-blue">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 xl:gap-x-12 mb-10">
           <div className="lg:col-span-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-nav-link">
-              My <span className="text-gradient gradient-7">Skills</span>
-            </h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left text-nav-link">
+            My <span className="text-gradient-6-start">Skills</span>
+          </h2>
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">

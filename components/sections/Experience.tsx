@@ -47,7 +47,7 @@ const ExperienceSection = () => (
   <section id="experience" className="wrapper bg-light">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
       <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left text-nav-link">
-        Experience and <span className="gradient-7 text-gradient">Education</span>
+        Experience and <span className="text-gradient-7-start">Education</span>
       </h2>
       <div className="space-y-12">
         {experienceCategories.map((category, index) => (
