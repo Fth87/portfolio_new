@@ -83,7 +83,7 @@
   }
 
   .btn-custom-gradient-7 span {
-    @apply block bg-white px-7 py-2.5 rounded-full transition-colors duration-300;
+    @apply block bg-soft-blue px-7 py-2.5 rounded-full transition-colors duration-300;
     color: var(--color-gradient-7-start);
   }
 
